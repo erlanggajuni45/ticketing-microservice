@@ -7,11 +7,18 @@ import { signupRouter } from './routes/signUp';
 import { errorHandler } from './middlewares/errorHandling';
 import { NotFoundError } from './errors/notFoundError';
 import mongoose from 'mongoose';
+import cookieSession from 'cookie-session';
 
 const app = express();
 
 app.use(express.json());
-
+app.set('trust proxy', true);
+app.use(
+  cookieSession({
+    secure: true,
+    signed: false,
+  })
+);
 app.use(currentUserRouter);
 app.use(signinRouter);
 app.use(signoutRouter);
