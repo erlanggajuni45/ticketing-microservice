@@ -40,7 +40,7 @@ router.post(
         id: user.id,
         email: user.email,
       },
-      'qwerty'
+      process.env.JWT_KEY!
     );
 
     // save the jwt to session
