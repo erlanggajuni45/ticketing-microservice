@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Router from 'next/router';
 // import { ErrorForm, ErrorMessage } from '../../components/errorComponent';
 import useRequest from '../../hooks/useRequest';
 
@@ -9,11 +10,12 @@ const SignUp = () => {
     url: '/api/users/signup',
     method: 'post',
     body: { email, password },
+    onSuccess: () => Router.push('/'),
   });
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const response = doRequest();
+    await doRequest();
   };
 
   return (
