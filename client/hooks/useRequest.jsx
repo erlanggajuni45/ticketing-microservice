@@ -10,7 +10,6 @@ export default function useRequest({ url, method, body }) {
       const response = await axios[method](url, body);
       return response.data;
     } catch (err) {
-      console.log(err);
       setErrors(err.response.data.errors);
     }
   };
