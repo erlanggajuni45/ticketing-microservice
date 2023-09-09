@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+import ErrorForm from '../../components/errorForm';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -28,11 +29,12 @@ const SignUp = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {errors.find((err) => err.field === 'email') ? (
-          <p className='text-danger'>{errors.find((err) => err.field === 'email').message}</p>
-        ) : (
-          ''
-        )}
+        {
+          <ErrorForm
+            field='email'
+            errors={errors}
+          />
+        }
       </div>
       <div className='form-group'>
         <label>Password</label>
@@ -42,11 +44,12 @@ const SignUp = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {errors.find((err) => err.field === 'password') ? (
-          <p className='text-danger'>{errors.find((err) => err.field === 'password').message}</p>
-        ) : (
-          ''
-        )}
+        {
+          <ErrorForm
+            field='password'
+            errors={errors}
+          />
+        }
       </div>
       <button className='btn btn-primary'>Sign Up</button>
     </form>
